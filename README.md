@@ -41,7 +41,7 @@ Niedokończone zadanie też warto podesłać, np. z komentarzem, co by można by
 
 Zakończenie pracy i wysłanie wyniku
 ------------
-  1. Utwórz Pull Request do oryginalnego repozytorium, na podstawie swojego Forka: [Jak tworzyć Pull Request na podstawie forka](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+  1. **Utwórz Pull Request do oryginalnego repozytorium**, na podstawie swojego Forka: [Jak tworzyć Pull Request na podstawie forka](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
   1. **Poza implementacją zależy nam też na informacjach zwrotnych, które posłużą nam w poprawie jakości zadań.** Dlatego prosimy Cię o umieszczenie dodatkowo informacji w opisie tworzonego Pull Requesta:
      1. Faktycznie poświęconego czasu na zadanie (po zakończeniu implementacji)
      1. Feedbacku do samego zadania 
