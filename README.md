@@ -1,17 +1,24 @@
 Fullstack Developer - Tasks
 ==========
 
-**NOTE 1:** Jeśli w przesłanej instrukcji nie zaznaczono inaczej, wystarczy zrealizować zadanie nr 1.
+**NOTE 1:** Jeśli w przesłanej mailem instrukcji nie zaznaczono inaczej, wystarczy zrealizować zadanie nr 1.
 
 **NOTE 2:** Instrukcje do poszczególnych zadań znajdują się w dalszej części Readme (sekcja "Treść zadań").
 
-Wytyczne ogólne
+Jak zacząć
 ------------
+Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](https://docs.github.com/en/get-started/quickstart/fork-a-repo), w ten sposób tworząc sobie prywatne miejsce do pracy.
 
-  1. W repozytorium znajdują się zadania do wykonania w folderze `./tasks/` głównego katalogu repozytorium. 
-  1. Każdy plik w w/w folderze jest oznaczony numerem zadania, oraz zawiera treść zadania.      
-  1. Uruchomienie kodu w zadaniu jest możliwe przez uruchomienie pliku z zadaniem z konsoli. Przykład:
-  
+### Setup środowiska
+
+  1. **Jeśli masz Dockera**, zacznij od zbudowania dockera (w repozytorium jest Dockerfile) i zaloguj się na kontener:
+     1. **(@todo wpisać komendy dockera)**
+  1. **Nie masz Dockera?** Nie szkodzi - skonfiguruj sobie lokalny serwer vHosta tak, żeby Twój lokalny serwer (np. Apache) pod domeną wskazaną w zadaniu pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo)
+  1. Zainstaluj paczki composera i npm (`$ composer install && npm install`)
+  1. Zbuduj appkę frontową w trybie watch (`$ npm run watch`)
+  1. …i do dzieła! :)
+
+
             $ php tasks/task1_exchangeRates.php
        
   1. *Alternatywnie, dla celów wygody*, można uruchomić zadanie z przeglądarki, uruchamiając plik index.php - w parametrze `taskNr` umieszczając numer zadania: `http://localhost/tasks_php/index.php?taskNr=1`
