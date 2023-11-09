@@ -3,8 +3,8 @@ Fullstack Developer - Tasks
 
 Wprowadzenie
 ------------
-1. Zapoznaj się z poniższymi wytycznymi do wykonania zadań. 
-2. Konkretną treść zadania/zadań przesłaliśmy mailem.
+1. Zapoznaj się z poniższymi wytycznymi do pracy.
+2. Konkretną treść zadania/zadań do wykonania przesłaliśmy mailem.
 
 Jak zacząć pracę
 ------------
@@ -19,9 +19,13 @@ Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](h
   1. Zbuduj appkę frontową w trybie watch (`$ npm run watch`)
   1. …i do dzieła! :)
 
+
+------------
 _FYI: tak wygląda działająca aplikacja, gotowa do developmentu:_
 
 ![Working_app_image](https://github.com/telemedico/recruitment_task_fullstack/blob/master/assets/img/working_app_preview.png?raw=true)
+
+------------
 
 Wytyczne dot. implementacji
 ------------
@@ -38,9 +42,9 @@ Niedokończone zadanie też warto podesłać, np. z komentarzem, co by można by
 Zakończenie pracy i wysłanie wyniku
 ------------
   1. Utwórz Pull Request do oryginalnego repozytorium, na podstawie swojego Forka: [Jak tworzyć Pull Request na podstawie forka](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
-  1. Poza implementacją zależy nam też na informacjach zwrotnych, które posłużą nam w poprawie jakości zadań. Dlatego prosimy Cię o umieszczenie dodatkowo informacji w opisie tworzonego Pull Requesta:
+  1. **Poza implementacją zależy nam też na informacjach zwrotnych, które posłużą nam w poprawie jakości zadań.** Dlatego prosimy Cię o umieszczenie dodatkowo informacji w opisie tworzonego Pull Requesta:
      1. Faktycznie poświęconego czasu na zadanie (po zakończeniu implementacji)
      1. Feedbacku do samego zadania 
      1. Twoich komentarzy dot. podejścia do zadania itd 
         1. np. _“Robiąc X miałem na względzie Y, zastosowałem podejście Z”_ 
-  1. Potwierdź nam mailowo wykonanie zadania, wysyłając link do utworzonego Pull Requesta
+  1. Prosimy, potwierdź nam mailowo wykonanie zadania, wysyłając link do utworzonego Pull Requesta
