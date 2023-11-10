@@ -1,20 +1,30 @@
 Fullstack Developer - Tasks
 ==========
 
-Wprowadzenie
 ------------
-1. Zapoznaj się z poniższymi wytycznymi do pracy.
-2. Konkretną treść zadania/zadań do wykonania przesłaliśmy mailem.
+
+### :warning: Zapoznaj się z poniższymi wytycznymi do pracy.
+### :warning: Treść zadań do wykonania przesłaliśmy mailem.
+
+------------
 
 Jak zacząć pracę
 ------------
-Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](https://docs.github.com/en/get-started/quickstart/fork-a-repo), w ten sposób tworząc sobie prywatne miejsce do pracy.
+1. Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](https://docs.github.com/en/get-started/quickstart/fork-a-repo), w ten sposób tworząc sobie prywatne miejsce do pracy.
+1. Następnie w stworzonym przez siebie forku repozytorium stwórz branch od gałęzi master, na którym będziesz pracować, np: ` $ git checkout -b MojeZadanieJanKowalski `
 
 ### Setup środowiska
 
-  1. **Jeśli masz Dockera**, zacznij od zbudowania dockera (w repozytorium jest Dockerfile) i zaloguj się na kontener:
-     1. **(@todo wpisać komendy dockera)**
-  1. **Nie masz Dockera?** Nie szkodzi - skonfiguruj sobie lokalny serwer vHosta tak, żeby Twój lokalny serwer (np. Apache) pod domeną wskazaną w zadaniu pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo)
+  1. Skonfiguruj sobie lokalny serwer (np. Apache) i ustaw vHosta tak, żeby pod wybraną domeną pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo) - przykład poniżej:
+
+        ```
+        <VirtualHost *:80>
+            # Root - katalog /public z repozytorium z Github
+            DocumentRoot "C:/xampp/htdocs/recruitment_task_fullstack/public/"
+            # domena lokalna
+            ServerName telemedi-zadanie.localhost
+        </VirtualHost>
+        ```
   1. Zainstaluj paczki composera i npm (`$ composer install && npm install`)
   1. Zbuduj appkę frontową w trybie watch (`$ npm run watch`)
   1. …i do dzieła! :)
