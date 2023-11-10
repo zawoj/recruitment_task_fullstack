@@ -15,7 +15,7 @@ Jak zacząć pracę
 
 ### Setup środowiska
 
-  1. Skonfiguruj sobie lokalny serwer (np. Apache) i ustaw vHosta tak, żeby pod wybraną domeną pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo) - przykład poniżej:
+  1. Skonfiguruj sobie lokalny serwer (np. Apache) pod development; ustaw vHosta tak, żeby pod wybraną domeną pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo) - przykład poniżej:
 
         ```
         <VirtualHost *:80>
