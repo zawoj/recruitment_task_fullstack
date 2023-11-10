@@ -1,20 +1,30 @@
 Fullstack Developer - Tasks
 ==========
 
-Wprowadzenie
 ------------
-1. Zapoznaj się z poniższymi wytycznymi do pracy.
-2. Konkretną treść zadania/zadań do wykonania przesłaliśmy mailem.
+
+### :warning: Zapoznaj się z poniższymi wytycznymi do pracy.
+### :warning: Treść zadań do wykonania przesłaliśmy mailem.
+
+------------
 
 Jak zacząć pracę
 ------------
-Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](https://docs.github.com/en/get-started/quickstart/fork-a-repo), w ten sposób tworząc sobie prywatne miejsce do pracy.
+1. Należy zrobić Fork z tego repozytorium [Jak forkować repozytorium w GitHub](https://docs.github.com/en/get-started/quickstart/fork-a-repo), w ten sposób tworząc sobie prywatne miejsce do pracy.
+1. Następnie w stworzonym przez siebie forku repozytorium stwórz branch od gałęzi master, na którym będziesz pracować, np: ` $ git checkout -b MojeZadanieJanKowalski `
 
 ### Setup środowiska
 
-  1. **Jeśli masz Dockera**, zacznij od zbudowania dockera (w repozytorium jest Dockerfile) i zaloguj się na kontener:
-     1. **(@todo wpisać komendy dockera)**
-  1. **Nie masz Dockera?** Nie szkodzi - skonfiguruj sobie lokalny serwer vHosta tak, żeby Twój lokalny serwer (np. Apache) pod domeną wskazaną w zadaniu pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo)
+  1. Skonfiguruj sobie lokalny serwer (np. Apache) i ustaw vHosta tak, żeby pod wybraną domeną pokazywał na odpowiedni katalog na dysku (tj. katalog `public/` z repo) - przykład poniżej:
+
+        ```
+        <VirtualHost *:80>
+            # Root - katalog /public z repozytorium z Github
+            DocumentRoot "C:/xampp/htdocs/recruitment_task_fullstack/public/"
+            # domena lokalna
+            ServerName telemedi-zadanie.localhost
+        </VirtualHost>
+        ```
   1. Zainstaluj paczki composera i npm (`$ composer install && npm install`)
   1. Zbuduj appkę frontową w trybie watch (`$ npm run watch`)
   1. …i do dzieła! :)
@@ -41,10 +51,10 @@ Niedokończone zadanie też warto podesłać, np. z komentarzem, co by można by
 
 Zakończenie pracy i wysłanie wyniku
 ------------
-  1. **Utwórz Pull Request do oryginalnego repozytorium**, na podstawie swojego Forka: [Jak tworzyć Pull Request na podstawie forka](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork)
+  1. **W swoim forku utwórz Pull Request do brancha master. Nie rób PR do oryginalnego repozytorium** (Pull Requesty do publicznych repo są publiczne)
   1. **Poza implementacją zależy nam też na informacjach zwrotnych, które posłużą nam w poprawie jakości zadań.** Dlatego prosimy Cię o umieszczenie dodatkowo informacji w opisie tworzonego Pull Requesta:
      1. Faktycznie poświęconego czasu na zadanie (po zakończeniu implementacji)
      1. Feedbacku do samego zadania 
      1. Twoich komentarzy dot. podejścia do zadania itd 
         1. np. _“Robiąc X miałem na względzie Y, zastosowałem podejście Z”_ 
-  1. Prosimy, potwierdź nam mailowo wykonanie zadania, wysyłając link do utworzonego Pull Requesta
+  1. **Prosimy, potwierdź nam mailowo wykonanie zadania, wysyłając link do Pull Requesta w swoim forku.**
