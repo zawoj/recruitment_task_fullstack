@@ -27,8 +27,7 @@ Jak zacząć pracę
         ```
   1. Jeśli Twoja skonfigurowana domena jest inna niż `telemedi-zadanie.localhost` - zmień ją w pliku `assets/js/components/SetupCheck.js` w metodzie getBaseUrl()
   1. Zainstaluj paczki composera i npm (`$ composer install && npm install`)
-  1. Zbuduj appkę frontową w trybie watch (`$ npm run watch`)
-     1. Jeśli tryb watch nie działa, możesz używać komendy `$ npm run build` do zbudowania aplikacji Reactowej
+  1. Zbuduj appkę frontową w trybie watch (`$ npm run watch --dev`)
   1. …i już, do dzieła! :)
 
 

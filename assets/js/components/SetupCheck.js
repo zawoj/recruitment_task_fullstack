@@ -18,7 +18,8 @@ class SetupCheck extends Component {
     }
 
     checkApiSetup() {
-        const baseUrl = this.getBaseUrl();
+        //const baseUrl = this.getBaseUrl();
+        const baseUrl = 'http://telemedi-zadanie.localhost';
         axios.get(baseUrl + `/api/setup-check?testParam=1`).then(response => {
             let responseIsOK = response.data && response.data.testParam === 1
             this.setState({ setupCheck: responseIsOK, loading: false})
@@ -38,19 +39,19 @@ class SetupCheck extends Component {
                             <div className="col-md-8 offset-md-2">
                                 <h2 className="text-center"><span>This is a test</span> @ Telemedi</h2>
 
-                        {loading ? (
-                            <div className={'text-center'}>
-                                <span className="fa fa-spin fa-spinner fa-4x"></span>
-                            </div>
-                        ) : (
-                            <div className={'text-center'}>
-                                { this.state.setupCheck === true ? (
-                                    <h3 class={'text-success text-bold'}><strong>React app works!</strong></h3>
+                                {loading ? (
+                                    <div className={'text-center'}>
+                                        <span className="fa fa-spin fa-spinner fa-4x"></span>
+                                    </div>
                                 ) : (
-                                    <h3 className={'text-error text-bold'}><strong>React app doesn't work :(</strong></h3>
+                                    <div className={'text-center'}>
+                                        { this.state.setupCheck === true ? (
+                                            <h3 className={'text-success text-bold'}><strong>React app works!</strong></h3>
+                                        ) : (
+                                            <h3 className={'text-error text-bold'}><strong>React app doesn't work :(</strong></h3>
+                                        )}
+                                    </div>
                                 )}
-                            </div>
-                        )}
                             </div>
                         </div>
                     </div>
