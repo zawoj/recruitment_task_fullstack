@@ -1,35 +1,41 @@
-FROM php:7.4-apache
+# Użyj oficjalnego obrazu PHP z Docker Hub
+FROM php:7.2-apache
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
+# Ustalamy katalog roboczy
+WORKDIR /var/www/html
 
-COPY ./apache-config.conf /etc/apache2/sites-available/apache-config.conf
-RUN a2ensite apache-config
+# Instalujemy niezbędne pakiety
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y git curl zip libzip-dev
 
-RUN apt-get update \
-    && apt-get install -y \
-    vim \
-    curl \
-    libxml2-dev \
-    zip \
-    unzip \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# Instalujemy Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+# Instalujemy Node.js i npm
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 
-COPY . /var/www/html/
+# Kopiujemy nasze pliki do kontenera
+COPY . .
 
-WORKDIR /var/www/html/
+# Kopiujemy naszą konfigurację Apache do kontenera
+COPY ./000-default.conf /etc/apache2/sites-available/
 
-RUN chown -R www-data:www-data /var/www/html/
-RUN chmod -R 755 /var/www/html/
-
-RUN docker-php-ext-install xml dom
-
+# Instalujemy zależności z composer i npm
 RUN composer install
 RUN npm install
 
-CMD service apache2 start && npm run watch
+# Zmieniamy właściciela wszystkich plików w katalogu /var/www
+RUN chown -R www-data:www-data /var/www
+
+# Aktywujemy mod_rewrite dla Apache
+RUN a2enmod rewrite
+
+# Uruchamiamy komendę npm run dev
+RUN npm run build
+
+# Restartujemy Apache ze zmienioną konfiguracją
+RUN service apache2 restart
+
+# Udostępniamy porty http i https
+EXPOSE 80 443
