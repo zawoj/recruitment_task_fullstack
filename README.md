@@ -33,6 +33,7 @@ Jak zacząć pracę
 ### Setup środowiska za pomocą dockera
 
   1. Uruchom komendę:
+  
         ```
         docker compose up -d
         ```
