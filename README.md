@@ -30,6 +30,13 @@ Jak zacząć pracę
   1. Zbuduj appkę frontową w trybie watch (`$ npm run watch --dev`)
   1. …i już, do dzieła! :)
 
+### Setup środowiska za pomocą dockera
+
+  1. Uruchom komendę:
+        ```
+        docker compose up -d
+        ```
+  1. Pod adresem  `http://telemedi-zadanie.localhost` powinna uruchomić się aplikacja 
 
 ------------
 _FYI: tak wygląda działająca aplikacja, gotowa do developmentu:_
