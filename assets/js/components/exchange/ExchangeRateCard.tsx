@@ -25,7 +25,7 @@ const ExchangeRateCard: FC<Props> = (porps) => {
             <tbody>
               <tr>
                 <td>NBP</td>
-                <td>{rate.todayMid ?? '---'}</td>
+                <td>{rate.todayMid.toFixed(4) ?? '---'}</td>
                 <td>{rate.mid.toFixed(4)}</td>
               </tr>
               <tr>
