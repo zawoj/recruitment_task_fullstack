@@ -19,6 +19,9 @@ const ExchangeView = () => {
   const [exchangeData, setExchangeData] = useState<ExchangeRatesTable | null>(
     null
   );
+  const [todayExchangeData, setTodayExchangeData] = useState<ExchangeRatesTable | null>(
+    null
+  );
   const [loading, setLoading] = useState(true);
 
   const [maxStart, setMaxStart] = useState(today);
@@ -60,6 +63,8 @@ const ExchangeView = () => {
       setLoading(false);
     });
 
+    
+
     setMaxEnd(today)
     setMinEnd(startDate)
     setMaxStart(endDate)
@@ -72,7 +77,6 @@ const ExchangeView = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(JSON.stringify(exchangeData));
 
   return (
     <div className='container'>
@@ -95,7 +99,10 @@ const ExchangeView = () => {
       </div>
       <div className='row'>
         {exchangeData.rates.map((rate, index) => (
-          <ExchangeRateCard key={`${index}-${rate.code}`} rate={rate} />
+          <ExchangeRateCard 
+            key={`${index}-${rate.code}`} 
+            rate={rate} 
+          />
         ))}
       </div>
     </div>
