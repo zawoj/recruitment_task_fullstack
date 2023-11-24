@@ -14,7 +14,7 @@ import AdminView from "../sections/admin/AdminView";
 const Routes = () => {
   return (
     <Router>
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark mb-4'>
         <Link className={"navbar-brand"} to={"/"}>
           Telemedi Zadanko
         </Link>

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class NBPController extends AbstractController
 {
@@ -28,13 +29,23 @@ class NBPController extends AbstractController
         );
     }
 
-  public function getTable(): Response {
-       $response = $this->client->request(
-        'GET',
-        'http://api.nbp.pl/api/exchangerates/tables/a/'
-        );
+  public function getTable(Request $request): Response {
+    $tableType = 'a'; // Typ tabeli, np. 'a', 'b', 'c', itd.
+    // $date = $request->query->get('date');
+    $startDate = $request->query->get('startDate');
+    $endDate = $request->query->get('endDate');
 
-        $content = $response->toArray();
+    // Ustawienie URL w zależności od przekazanych parametrów
+    if ($startDate && $endDate) {
+        $url = 'http://api.nbp.pl/api/exchangerates/tables/' . $tableType . '/' . $startDate . '/' . $endDate . '/';
+    // } elseif ($date) {
+    //     $url = 'http://api.nbp.pl/api/exchangerates/tables/' . $tableType . '/' . $date . '/';
+    } else {
+        $url = 'http://api.nbp.pl/api/exchangerates/tables/' . $tableType . '/';
+    }
+
+    $response = $this->client->request('GET', $url);
+    $content = $response->toArray();
 
         $supportedCurrencies = ['EUR', 'USD', 'CZK', 'IDR', 'BRL'];
 
