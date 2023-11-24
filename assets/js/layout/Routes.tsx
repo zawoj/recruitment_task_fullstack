@@ -26,17 +26,17 @@ const Routes = () => {
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} to={"/about"}>
+              <NavLink className={"nav-link"} exact to={"/about"}>
                 About
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} to={"/exchange-rates"}>
+              <NavLink className={"nav-link"} exact to={"/exchange-rates"}>
                 Exchange Rates
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} to={"/admin-demo"}>
+              <NavLink className={"nav-link"} exact to={"/admin-demo"}>
                 Admin Demo
               </NavLink>
             </li>
@@ -45,9 +45,9 @@ const Routes = () => {
       </nav>
       <Switch>
         <Route exact path='/' component={HomeView} />
-        <Route path='/about' component={AboutView} />
-        <Route path='/exchange-rates' component={ExchangeView} />
-        <Route path='/admin-demo' component={AdminView} />
+        <Route exact path='/about' component={AboutView} />
+        <Route exact path='/exchange-rates' component={ExchangeView} />
+        <Route exact path='/admin-demo' component={AdminView} />
       </Switch>
     </Router>
   );
