@@ -1,3 +1,8 @@
 body {
-    background-color: lightgray;
+  background-color: lightgray;
+}
+
+.nav-link.active {
+  border-radius: 5px; /* Zaokrąglone rogi */
+  padding: 5px 10px; /* Padding dla lepszego wyglądu */
 }

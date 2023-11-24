@@ -61,7 +61,7 @@ Encore
   //.enableSassLoader()
 
   // uncomment if you use TypeScript
-  .addEntry("app", "./assets/js/app.tsx")
+  .addEntry("app", "./assets/js/index.tsx")
   .enableReactPreset()
   .enableTypeScriptLoader();
 

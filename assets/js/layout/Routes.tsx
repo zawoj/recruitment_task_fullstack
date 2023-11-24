@@ -1,0 +1,56 @@
+import React, { FC } from "react";
+import {
+  Link,
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  NavLink,
+} from "react-router-dom";
+import HomeView from "../sections/home/HomeView";
+import AboutView from "../sections/about/AboutView";
+import ExchangeView from "../sections/exchange/ExchangeView";
+import AdminView from "../sections/admin/AdminView";
+
+const Routes = () => {
+  return (
+    <Router>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <Link className={"navbar-brand"} to={"/"}>
+          Telemedi Zadanko
+        </Link>
+        <div id='navbarText'>
+          <ul className='navbar-nav mr-auto'>
+            <li className='nav-item'>
+              <NavLink className={"nav-link"} exact to={"/"}>
+                Home
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className={"nav-link"} to={"/about"}>
+                About
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className={"nav-link"} to={"/exchange-rates"}>
+                Exchange Rates
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className={"nav-link"} to={"/admin-demo"}>
+                Admin Demo
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <Switch>
+        <Route exact path='/' component={HomeView} />
+        <Route path='/about' component={AboutView} />
+        <Route path='/exchange-rates' component={ExchangeView} />
+        <Route path='/admin-demo' component={AdminView} />
+      </Switch>
+    </Router>
+  );
+};
+
+export default Routes;
