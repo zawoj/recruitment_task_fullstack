@@ -4,6 +4,9 @@ export type ExchangeRate = {
   mid: number;
   buyRate?: number;
   sellRate?: number;
+  todayMid?: number;
+  todaySell?: number;
+  todayBuy?: number;
 };
 
 export type ExchangeRatesTable = {

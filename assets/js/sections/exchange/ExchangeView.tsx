@@ -10,50 +10,37 @@ const ExchangeView = () => {
   const history = useHistory();
   const today = new Date().toISOString().split('T')[0];
   const queryParams = new URLSearchParams(location.search);
-  const initialStartDate = queryParams.get('startDate') || new Date().toISOString().split('T')[0];
-  const initialEndDate = queryParams.get('endDate') || new Date().toISOString().split('T')[0];
+  const initialDate = queryParams.get('date') || new Date().toISOString().split('T')[0];
 
 
-  const [startDate, setStartDate] = useState(initialStartDate);
-  const [endDate, setEndDate] = useState(initialEndDate);
+
+  const [date, setDate] = useState(initialDate);
   const [exchangeData, setExchangeData] = useState<ExchangeRatesTable | null>(
-    null
-  );
-  const [todayExchangeData, setTodayExchangeData] = useState<ExchangeRatesTable | null>(
     null
   );
   const [loading, setLoading] = useState(true);
 
-  const [maxStart, setMaxStart] = useState(today);
-  const [maxEnd, setMaxEnd] = useState(today);
-  const [minStart, setMinStart] = useState("2023-01-01")
-  const [minEnd, setMinEnd] = useState("2023-01-01")
 
 
   const handleStartDateChange = (newDate:string) => {
-    setStartDate(newDate);
-    setMaxEnd(today); 
-    setMinEnd(newDate); 
-    updateQueryParams(newDate, endDate);
+    setDate(newDate);
+    updateQueryParams(newDate);
   };
 
   const handleEndDateChange = (newDate:string) => {
-    setEndDate(newDate);
-    setMaxStart(newDate); 
-    setMinStart("2023-01-01");
-    updateQueryParams(startDate, newDate);
+    setDate(newDate);
+    updateQueryParams( newDate);
   };
 
-  const updateQueryParams = (newStartDate:string, newEndDate:string) => {
+  const updateQueryParams = (date:string, ) => {
     const newQueryParams = new URLSearchParams();
-    newQueryParams.set('startDate', newStartDate);
-    newQueryParams.set('endDate', newEndDate);
+    newQueryParams.set('date', date);
     history.push({ search: newQueryParams.toString() });
   };
 
   useEffect(() => {
   axios
-    .get(`http://telemedi-zadanie.localhost/api/nbp?startDate=${startDate}&endDate=${endDate}`)
+    .get(`http://telemedi-zadanie.localhost/api/nbp?date=${date}`)
     .then((response) => {
       setExchangeData(response.data[0]);
       setLoading(false);
@@ -65,12 +52,9 @@ const ExchangeView = () => {
 
     
 
-    setMaxEnd(today)
-    setMinEnd(startDate)
-    setMaxStart(endDate)
-    setMinStart("2023-01-01")
+  
 
-}, [startDate, endDate]);
+}, [date]);
 
 
   if (loading) {
@@ -84,17 +68,10 @@ const ExchangeView = () => {
     <div>
         <input 
           type="date" 
-          value={startDate} 
-          onChange={(e) => handleStartDateChange(e.target.value)} 
-          min={minStart}
-          max={maxStart} 
-        />
-        <input 
-          type="date" 
-          value={endDate} 
+          value={date} 
           onChange={(e) => handleEndDateChange(e.target.value)} 
-          min={minEnd}
-          max={maxEnd} 
+          min="2019-01-01"
+          max={today} 
         />
       </div>
       <div className='row'>

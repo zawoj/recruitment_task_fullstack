@@ -25,36 +25,22 @@ const ExchangeRateCard: FC<Props> = (porps) => {
             <tbody>
               <tr>
                 <td>NBP</td>
-                {/* <td>{todayRate.mid ?? '---'}</td> */}
+                <td>{rate.todayMid ?? '---'}</td>
                 <td>{rate.mid.toFixed(4)}</td>
               </tr>
               <tr>
                 <td>Buy</td>
-                <td>
-                  {/* {todayRate.buyRate ? todayRate.buyRate.toFixed(4) : '--'} */}
-                </td>
+                <td>{rate.todayBuy ? rate.todayBuy.toFixed(4) : '--'}</td>
                 <td>{rate.buyRate ? rate.buyRate.toFixed(4) : '--'}</td>
               </tr>
               <tr>
                 <td>Sell</td>
-                <td>
-                  {/* {todayRate.sellRate ? todayRate.sellRate.toFixed(4) : "--"} */}
-                </td>
+                <td>{rate.todaySell ? rate.todaySell.toFixed(4) : "--"}</td>
                 <td>{rate.sellRate ? rate.sellRate.toFixed(4) : "--"}</td>
               </tr>
             </tbody>
           </table>
-          {/* <p className='card-text'>NBP Rate: {rate.mid}</p>
-          <p className='card-text'>Buy Rate: {rate.buyRate ?? "N/A"}</p>
-          <p className='card-text'>Sell Rate: {rate.sellRate ?? "N/A"}</p> */}
-          {/* <div className="d-flex justify-content-around">
-            <a href='#' className='btn btn-success w-50 m-r-3'>
-            Buy
-            </a>
-            <a href='#' className='btn btn-danger w-50 m-l-3'>
-              Sell
-            </a>
-          </div> */}
+          
         </div>
       </div>
     </div>

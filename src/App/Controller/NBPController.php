@@ -30,13 +30,12 @@ class NBPController extends AbstractController
     }
 
   public function getTable(Request $request): Response {
-        $tableType = 'a'; // Typ tabeli, np. 'a', 'b', 'c', itd.
-        $startDate = $request->query->get('date');
-        $endDate = $request->query->get('endDate');
+       
+        $date  = $request->query->get('date');
         $today = (new \DateTime())->format('Y-m-d');
 
         $url = 'http://api.nbp.pl/api/exchangerates/tables/a/';
-        $url .= $startDate && $endDate ? $startDate . '/' . $endDate . '/' : '';
+        $url .= $date ? $date . '/' : '';
 
         $response = $this->client->request('GET', $url);
         $content = $response->toArray();
@@ -44,7 +43,7 @@ class NBPController extends AbstractController
         $todayResponse = null;
         $todayContent = null;
 
-        if ($startDate !== $today || $endDate !== $today) {
+        if ($date !== $today) {
             // Pobierz dane dla dnia dzisiejszego
             $todayResponse = $this->client->request('GET', 'http://api.nbp.pl/api/exchangerates/tables/a/');
             $todayContent = $todayResponse->toArray();
