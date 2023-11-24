@@ -39,7 +39,7 @@ const ExchangeView = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(exchangeData);
+  console.log(JSON.stringify(exchangeData));
 
   return (
     <div>
@@ -54,7 +54,7 @@ const ExchangeView = () => {
         </thead>
         <tbody>
           {exchangeData.rates.map((rate, index) => (
-            <tr key={index}>
+            <tr key={`${index}-${rate.code}`}>
               <td>{rate.currency}</td>
               <td>{rate.code}</td>
               <td>{rate.mid}</td>
