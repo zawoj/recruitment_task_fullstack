@@ -15,6 +15,7 @@ const ExchangeView = () => {
 
 
   const [date, setDate] = useState(initialDate);
+  const [error, setError] = useState(null);
   const [exchangeData, setExchangeData] = useState<ExchangeRatesTable | null>(
     null
   );
@@ -39,50 +40,53 @@ const ExchangeView = () => {
   };
 
   useEffect(() => {
-  axios
-    .get(`http://telemedi-zadanie.localhost/api/nbp?date=${date}`)
-    .then((response) => {
-      setExchangeData(response.data[0]);
-      setLoading(false);
-    })
-    .catch((error) => {
-      console.error("Error fetching data: ", error);
-      setLoading(false);
-    });
-
-    
-
-  
-
-}, [date]);
+    axios
+      .get(`http://telemedi-zadanie.localhost/api/nbp?date=${date}`)
+      .then((response) => {
+        setExchangeData(response.data[0]);
+        setLoading(false);
+        setError(null)
+      })
+      .catch((error) => {
+        setLoading(false);
+        setError(error.response.data.error)
+        setExchangeData(null)
+      });
+  }, [date]);
 
 
-  if (loading) {
-    return <div>Loading...</div>;
+if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
 
   return (
-    <div className='container'>
+    <div className='container my-4'>
+    <div className="text-center mb-4">
       <h2>Exchange Rates</h2>
-    <div>
-        <input 
-          type="date" 
-          value={date} 
-          onChange={(e) => handleEndDateChange(e.target.value)} 
-          min="2019-01-01"
-          max={today} 
-        />
-      </div>
-      <div className='row'>
-        {exchangeData.rates.map((rate, index) => (
-          <ExchangeRateCard 
-            key={`${index}-${rate.code}`} 
-            rate={rate} 
-          />
-        ))}
-      </div>
+      <input 
+        className="form-control my-2" 
+        type="date" 
+        value={date} 
+        onChange={(e) => handleEndDateChange(e.target.value)} 
+        min="2019-01-01"
+        max={today} 
+      />
     </div>
+    
+    <div className='row'>
+      {exchangeData !== null && exchangeData.rates.map((rate, index) => (
+        <div className="col-md-4 mb-4" key={`${index}-${rate.code}`}>
+          <ExchangeRateCard rate={rate} />
+        </div>
+      ))}
+    </div>
+    { error && <div className="alert alert-danger">{error}</div> }
+  </div>
   );
 };
 

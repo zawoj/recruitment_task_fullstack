@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import {
   Link,
   Route,
@@ -12,32 +12,42 @@ import ExchangeView from "../sections/exchange/ExchangeView";
 import AdminView from "../sections/admin/AdminView";
 
 const Routes = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
+  
   return (
     <Router>
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark mb-4'>
-        <Link className={"navbar-brand"} to={"/"}>
-          Telemedi Zadanko
+      <nav className='navbar navbar-expand-lg navbar-dark bg-success-custom mb-4'>
+        <Link className="navbar-brand" to="/">
+          {/* <img src="path_to_logo.png" alt="Logo" style={{ height: '30px' }} /> */}
+          Telemedi ATM
         </Link>
-        <div id='navbarText'>
-          <ul className='navbar-nav mr-auto'>
+
+        <button className="navbar-toggler" type="button" onClick={toggle}>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className={"collapse navbar-collapse" + (isOpen ? " show" : "")} id="navbarText">
+          <ul className='navbar-nav ml-auto'>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} exact to={"/"}>
+              <NavLink className="nav-link" exact to="/">
                 Home
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} exact to={"/about"}>
+              <NavLink className="nav-link" exact to="/about">
                 About
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} exact to={"/exchange-rates"}>
+              <NavLink className="nav-link" exact to="/exchange-rates">
                 Exchange Rates
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className={"nav-link"} exact to={"/admin-demo"}>
-                Admin Demo
+              <NavLink className="nav-link" exact to="/contact">
+                Contact
               </NavLink>
             </li>
           </ul>
@@ -47,7 +57,7 @@ const Routes = () => {
         <Route exact path='/' component={HomeView} />
         <Route exact path='/about' component={AboutView} />
         <Route exact path='/exchange-rates' component={ExchangeView} />
-        <Route exact path='/admin-demo' component={AdminView} />
+        <Route exact path='/contact' component={AdminView} />
       </Switch>
     </Router>
   );

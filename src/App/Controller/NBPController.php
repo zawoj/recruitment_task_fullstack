@@ -38,6 +38,11 @@ class NBPController extends AbstractController
         $url .= $date ? $date . '/' : '';
 
         $response = $this->client->request('GET', $url);
+
+        if ($response->getStatusCode() !== 200) {
+            return $this->json(['error' => 'Nie znaleziono danych dla podanej daty'], 404);
+        }
+
         $content = $response->toArray();
 
         $todayResponse = null;
@@ -45,8 +50,14 @@ class NBPController extends AbstractController
 
         if ($date !== $today) {
             // Pobierz dane dla dnia dzisiejszego
-            $todayResponse = $this->client->request('GET', 'http://api.nbp.pl/api/exchangerates/tables/a/');
-            $todayContent = $todayResponse->toArray();
+            $todayResponse = $this->client->request('GET', 'http://api.nbp.pl/api/exchangerates/tables/a/' . $today);
+
+            if ($todayResponse->getStatusCode() === 200) {
+                $todayContent = json_decode($todayResponse->getContent(), true);
+            } else {
+                $todayResponse = null;
+                $todayContent = $todayResponse;
+            }
         }
 
         $todayRates = [];
