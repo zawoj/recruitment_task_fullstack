@@ -15,3 +15,17 @@ export type ExchangeRatesTable = {
   effectiveDate: string;
   rates: ExchangeRate[];
 };
+
+export type HistoryRatesTable = {
+  table: string;
+  code: string;
+  currency: string;
+  rates: HistoryRate[];
+};
+
+
+export type HistoryRate = {
+  no: string;
+  effectiveDate: string;
+  mid: number;
+};

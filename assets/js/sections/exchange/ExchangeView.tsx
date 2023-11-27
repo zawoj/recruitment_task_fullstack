@@ -66,17 +66,17 @@ if (loading) {
 
   return (
     <div className='container my-4'>
-    <div className="text-center mb-4">
-      <h2>Exchange Rates</h2>
-      <input 
-        className="form-control my-2" 
-        type="date" 
-        value={date} 
-        onChange={(e) => handleEndDateChange(e.target.value)} 
-        min="2019-01-01"
-        max={today} 
-      />
-    </div>
+      <div className="text-center mb-4">
+        <h2>Exchange Rates</h2>
+        <input 
+          className="form-control my-2" 
+          type="date" 
+          value={date} 
+          onChange={(e) => handleEndDateChange(e.target.value)} 
+          min="2019-01-01"
+          max={today} 
+        />
+      </div>
     
     <div className='row'>
       {exchangeData !== null && exchangeData.rates.map((rate, index) => (
