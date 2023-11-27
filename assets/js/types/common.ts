@@ -28,4 +28,5 @@ export type HistoryRate = {
   no: string;
   effectiveDate: string;
   mid: number;
+  height?: number;
 };

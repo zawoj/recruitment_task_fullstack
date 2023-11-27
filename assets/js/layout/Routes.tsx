@@ -9,8 +9,8 @@ import {
 import HomeView from "../sections/home/HomeView";
 import AboutView from "../sections/about/AboutView";
 import ExchangeView from "../sections/exchange/ExchangeView";
-import AdminView from "../sections/admin/AdminView";
 import EchangeHistoryView from "../sections/exchange/EchangeHistoryView";
+import ContactView from "../sections/contanct/ContactView";
 
 const Routes = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,7 @@ const Routes = () => {
         <Route exact path='/' component={HomeView} />
         <Route exact path='/about' component={AboutView} />
         <Route exact path='/exchange-rates' component={ExchangeView} />
-        <Route exact path='/contact' component={AdminView} />
+        <Route exact path='/contact' component={ContactView} />
         <Route path={'/rate-history'} component={EchangeHistoryView} />
       </Switch>
     </Router>

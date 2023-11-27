@@ -1,7 +1,7 @@
 import React from "react";
 
 const AboutView = () => {
-  return <div>AboutView</div>;
+  return <h1 className="text-center">About</h1>;
 };
 
 export default AboutView;

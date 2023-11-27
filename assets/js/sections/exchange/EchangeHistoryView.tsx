@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom';
 import { ExchangeRatesTable, HistoryRate, HistoryRatesTable } from '../../types/common';
 import axios from 'axios';
+import ChartBlock from '../../components/exchange/ChartBlock';
 
 const EchangeHistoryView = () => {
   const location = useLocation();
@@ -128,20 +129,8 @@ if (loading) {
       <div className='bg-white w-100 pt-4 pb-2 px-2 d-flex justify-content-between align-items-end'>
         {
            !error && genHeight(exchangeData.rates).map((rate) =>(
-                <div className='d-flex flex-column align-items-center justify-content-between' key={rate.effectiveDate}>
-                  <div
-                    style={{
-                      height: `${rate.height.toFixed(0)}px`,
-                    }}
-                    className='chart-block'
-                  >
-                    <div className='chart-value'>
-                      {rate.mid}
-                    </div>
-                  </div>
-                  
-                  <span className='text-center'>{rate.effectiveDate}</span>
-                </div>
+               <ChartBlock
+               rate={rate} key={rate.effectiveDate}/>
             ))
         }
     { error && <div className="alert alert-danger">{error}</div> }
