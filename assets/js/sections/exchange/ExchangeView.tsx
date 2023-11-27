@@ -43,7 +43,7 @@ const ExchangeView = () => {
     axios
       .get(`http://telemedi-zadanie.localhost/api/nbp?date=${date}`)
       .then((response) => {
-        setExchangeData(response.data[0]);
+        setExchangeData(response.data);
         setLoading(false);
         setError(null)
       })
@@ -73,7 +73,7 @@ if (loading) {
           type="date" 
           value={date} 
           onChange={(e) => handleEndDateChange(e.target.value)} 
-          min="2019-01-01"
+          min="2023-01-01"
           max={today} 
         />
       </div>

@@ -21,7 +21,6 @@ const Routes = () => {
     <Router>
       <nav className='navbar navbar-expand-lg navbar-dark bg-success-custom mb-4'>
         <Link className="navbar-brand" to="/">
-          {/* <img src="path_to_logo.png" alt="Logo" style={{ height: '30px' }} /> */}
           Telemedi ATM
         </Link>
 
