@@ -107,5 +107,43 @@ class NBPController extends AbstractController
 
 
 
+    public function getHistory(Request $request): Response {
+        $tableType = 'a'; // Typ tabeli, np. 'a', 'b', 'c', itd.
+        $startDate = $request->query->get('startDate');
+        $endDate = $request->query->get('endDate');
+        $code = $request->query->get('code');
+
+        if(!$code){
+            return $this->json(['error' => 'Nie podano kodu waluty'], 404);
+        }
+
+        if($startDate 
+            && $endDate 
+            && (new \DateTime($startDate)) > (new \DateTime($endDate)) 
+        ){
+            return $this->json(['error' => 'Niepoprawne daty'], 404);
+        }
+        
+
+
+        $url = 'http://api.nbp.pl/api/exchangerates/rates/a/' . $code . '/';
+        $url .= $startDate && $endDate ? $startDate . '/' . $endDate . '/' : '';
+
+       
+
+        $response = $this->client->request('GET', $url);
+
+        if ($response->getStatusCode() !== 200) {
+            return $this->json(['error' => 'Brak danych'], 404);
+        }
+
+        $content = $response->toArray(); 
+
+
+        return $this->json($content);
+    }  
+
+
+
 
 }

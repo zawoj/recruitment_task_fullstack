@@ -8,6 +8,10 @@ gettable:
   path: /api/nbp
   controller: App\Controller\NBPController::getTable
 
+gethistory:
+  path: /api/history
+  controller: App\Controller\NBPController::getHistory
+
 setupcheck:
   path: /api/setup-check
   controller: App\Controller\DefaultController::setupCheck
