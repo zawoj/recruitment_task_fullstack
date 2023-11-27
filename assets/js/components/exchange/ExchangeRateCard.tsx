@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { ExchangeRate } from "../../types/common";
+import { Link } from "react-router-dom";
 
 interface Props {
   rate: ExchangeRate;
@@ -18,7 +19,7 @@ const ExchangeRateCard: FC<Props> = (porps) => {
           <tr>
             <th></th>
             <th className="text-center">Today</th>
-            <th className="text-center">From Range</th>
+            <th className="text-center">Picked date</th>
           </tr>
         </thead>
         <tbody>
@@ -39,6 +40,18 @@ const ExchangeRateCard: FC<Props> = (porps) => {
           </tr>
         </tbody>
       </table>
+      <div className="flex w-100 justify-content-center">
+        <Link to={`/rate-history?code=${rate.code}`} className="
+          d-flex
+          justify-content-center
+          align-items-center
+          w-100
+          
+        ">
+          <button className="btn btn-primary">Show history</button>
+        </Link>
+      </div>
+      
     </div>
   </div>
 
