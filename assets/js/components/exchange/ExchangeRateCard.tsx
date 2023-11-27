@@ -48,7 +48,7 @@ const ExchangeRateCard: FC<Props> = (porps) => {
           w-100
           
         ">
-          <button className="btn btn-primary">Show history</button>
+          <button className="btn btn-primary bg-success-custom">Show history</button>
         </Link>
       </div>
       

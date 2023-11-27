@@ -77,10 +77,13 @@ const EchangeHistoryView = () => {
 
 
 
-  if (loading) {
-    return <div>Loading...</div>;
+if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+        <div className="spinner"></div>
+      </div>
+    );
   }
-
 
   const genHeight = (rates: HistoryRate[]) => {
     // scale it like max height is 120px and max value is 120px lowes value is 20px rest is % of max value
@@ -122,7 +125,7 @@ const EchangeHistoryView = () => {
         />
       </div>
     
-      <div className='bg-white w-100 m-2 pt-4 pb-2 px-2 d-flex justify-content-between align-items-end'>
+      <div className='bg-white w-100 pt-4 pb-2 px-2 d-flex justify-content-between align-items-end'>
         {
            !error && genHeight(exchangeData.rates).map((rate) =>(
                 <div className='d-flex flex-column align-items-center justify-content-between' key={rate.effectiveDate}>
