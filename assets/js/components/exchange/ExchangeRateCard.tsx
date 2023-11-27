@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 
 interface Props {
   rate: ExchangeRate;
+  date: string
 }
 
 const ExchangeRateCard: FC<Props> = (porps) => {
-  const { rate } = porps;
+  const { rate ,date} = porps;
+
+  console.log(date , 
+            new Date().toISOString().split('T')[0])
+
   return (
   <div className='card'>
     <div className='card-body'>
@@ -19,23 +24,28 @@ const ExchangeRateCard: FC<Props> = (porps) => {
           <tr>
             <th></th>
             <th className="text-center">Today</th>
-            <th className="text-center">Picked date</th>
+            { date === 
+            new Date().toISOString().split('T')[0] ? null :
+              <th className="text-center">Picked date</th>}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>NBP</td>
-            <td className="text-center">{rate.todayMid?.toFixed(4) ?? '---'}</td>
+            { date === 
+            new Date().toISOString().split('T')[0] ? null :<td className="text-center">{rate.todayMid?.toFixed(4) ?? '---'}</td>}
             <td className="text-center">{rate.mid.toFixed(4)}</td>
           </tr>
           <tr>
             <td>Buy</td>
-            <td className="text-center">{rate.todayBuy?.toFixed(4) ?? '--'}</td>
+            { date === 
+            new Date().toISOString().split('T')[0] ? null :<td className="text-center">{rate.todayBuy?.toFixed(4) ?? '--'}</td>}
             <td className="text-center">{rate.buyRate?.toFixed(4) ?? '--'}</td>
           </tr>
           <tr>
             <td>Sell</td>
-            <td className="text-center">{rate.todaySell?.toFixed(4) ?? "--"}</td>
+            { date === 
+            new Date().toISOString().split('T')[0] ? null : <td className="text-center">{rate.todaySell?.toFixed(4) ?? "--"}</td>}
             <td className="text-center">{rate.sellRate?.toFixed(4) ?? "--"}</td>
           </tr>
         </tbody>

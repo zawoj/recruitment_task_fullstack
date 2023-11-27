@@ -81,7 +81,7 @@ if (loading) {
     <div className='row'>
       {exchangeData !== null && exchangeData.rates.map((rate, index) => (
         <div className="col-md-4 mb-4" key={`${index}-${rate.code}`}>
-          <ExchangeRateCard rate={rate} />
+          <ExchangeRateCard rate={rate} date={exchangeData.effectiveDate}/>
         </div>
       ))}
     </div>
