@@ -10,9 +10,6 @@ interface Props {
 const ExchangeRateCard: FC<Props> = (porps) => {
   const { rate ,date} = porps;
 
-  console.log(date , 
-            new Date().toISOString().split('T')[0])
-
   return (
   <div className='card'>
     <div className='card-body'>
