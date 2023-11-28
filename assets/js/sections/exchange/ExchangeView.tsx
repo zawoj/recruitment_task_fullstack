@@ -58,7 +58,7 @@ const ExchangeView = () => {
 if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-        <div className="spinner"></div>
+        <div className="spinner" data-testid="spinner"></div>
       </div>
     );
   }
@@ -74,7 +74,8 @@ if (loading) {
           value={date} 
           onChange={(e) => handleEndDateChange(e.target.value)} 
           min="2023-01-01"
-          max={today} 
+          max={today}
+          data-testid="date-input"
         />
       </div>
     

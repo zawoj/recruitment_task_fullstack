@@ -81,7 +81,7 @@ const EchangeHistoryView = () => {
 if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-        <div className="spinner"></div>
+        <div className="spinner" data-testid="spinner"></div>
       </div>
     );
   }
@@ -115,7 +115,8 @@ if (loading) {
           onChange={(e) => handleStartDateChange(e.target.value)} 
           min={minStart}
           max={maxStart}
-          className='mr-2' 
+          className='mr-2'
+          data-testid="start-date-input"
         />
         <input 
           type="date" 
@@ -123,6 +124,7 @@ if (loading) {
           onChange={(e) => handleEndDateChange(e.target.value)} 
           min={minEnd}
           max={maxEnd} 
+          data-testid="end-date-input"
         />
       </div>
     
