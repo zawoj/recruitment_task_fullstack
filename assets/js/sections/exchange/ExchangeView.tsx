@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { ExchangeRatesTable } from "../../types/common";
 import ExchangeRateCard from "../../components/exchange/ExchangeRateCard";
 import { useHistory, useLocation } from 'react-router-dom';
+import Spinner from "../../components/common/Spinner";
+import ErrorAlert from "../../components/common/Error";
 
 
 const ExchangeView = () => {
@@ -57,9 +59,7 @@ const ExchangeView = () => {
 
 if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-        <div className="spinner" data-testid="spinner"></div>
-      </div>
+      <Spinner />
     );
   }
 
@@ -86,7 +86,7 @@ if (loading) {
         </div>
       ))}
     </div>
-    { error && <div className="alert alert-danger">{error}</div> }
+    { error && <ErrorAlert error={error}/> }
   </div>
   );
 };

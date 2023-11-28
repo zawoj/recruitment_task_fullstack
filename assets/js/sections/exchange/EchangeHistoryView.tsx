@@ -3,6 +3,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { ExchangeRatesTable, HistoryRate, HistoryRatesTable } from '../../types/common';
 import axios from 'axios';
 import ChartBlock from '../../components/exchange/ChartBlock';
+import Spinner from '../../components/common/Spinner';
+import { genHeight } from '../../utils/genHeight';
 
 const EchangeHistoryView = () => {
   const location = useLocation();
@@ -80,30 +82,9 @@ const EchangeHistoryView = () => {
 
 if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
-        <div className="spinner" data-testid="spinner"></div>
-      </div>
+      <Spinner />
     );
   }
-
-  const genHeight = (rates: HistoryRate[]) => {
-    // scale it like max height is 120px and max value is 120px lowes value is 20px rest is % of max value
-    const max = Math.max(...rates.map(rate => rate.mid))
-    const min = Math.min(...rates.map(rate => rate.mid))
-    const maxH = 150
-    const minH = 20
-    const range = max !== min ? max - min : 1
-    const step = (maxH - minH) / range
-    return rates.map(rate => {
-      const height = (rate.mid - min) * step + minH
-      return {
-        ...rate,
-        height
-      }
-    })
-
-  }
-
 
   return (
     <div className='container my-4'>
