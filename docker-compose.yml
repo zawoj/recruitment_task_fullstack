@@ -1,6 +1,5 @@
-version: '3.8'
+version: "3.8"
 services:
-
   webserver:
     build:
       context: .
@@ -9,6 +8,9 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+    volumes:
+      - .:/var/www/html
+    tty: true
     environment:
       - APACHE_RUN_USER=www-data
       - APACHE_RUN_GROUP=www-data

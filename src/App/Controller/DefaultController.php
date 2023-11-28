@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends AbstractController
 {
+    
 
     public function index(): Response
     {

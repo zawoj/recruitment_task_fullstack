@@ -1,3 +1,82 @@
 body {
-    background-color: lightgray;
+  background-color: #f3f3f3;
+}
+
+.nav-link.active {
+  border-radius: 5px; /* Zaokrąglone rogi */
+  padding: 5px 10px; /* Padding dla lepszego wyglądu */
+}
+
+
+.navbar .navbar-nav .nav-link {
+    color: #000000;
+    font-size: 1.1em;
+}
+.navbar .navbar-nav .nav-link:hover{
+    color: #ffff;
+}
+.navbar-logo-centered .navbar-nav .nav-link{
+    padding: .5em 1em;
+}
+
+.bg-primary-custom {
+  background-color: #5F464B;
+  color: white;
+}
+
+.bg-secondary-custom {
+  background-color: #8E4A49;
+  color: white;
+}
+
+.bg-success-custom {
+  background-color: #7DAA92;
+  color: white;
+  border: none;
+}
+
+.bg-info-custom {
+  background-color: #80FFEC;
+  color: black; 
+}
+
+.bg-light-custom {
+  background-color: #C2FBEF;
+  color: black;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3; 
+  border-top: 5px solid #7DAA92; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.chart-block {
+  width: 20px;
+  background: #506c5d;
+  display: inline-block;
+  position:relative;
+  transition: all ease-in 1s;
+}
+
+.chart-value{
+  position: absolute;
+  opacity: 0;
+  transition: all ease-in-out 0.1s;
+  left:50%;
+  top: -10px;
+  transform:translate(-50%, -50%);
+}
+
+.chart-block:hover .chart-value{
+  opacity: 1;
 }
