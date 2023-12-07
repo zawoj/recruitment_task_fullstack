@@ -83,20 +83,22 @@ const CalculatorView = () => {
 
 
     if(!optionOneValue.buy || !optionTwoValue.sell ){
-      console.log(optionOneValue, optionTwoValue)
       setResultError("Wymiana nie jest możliwa dla wybranych opcji.")
       return
     }
     
   
-    console.log(optionOneValue.buy, optionTwoValue.sell)
     const result = (optionOneValue.buy / optionTwoValue.sell) * Number(startValue)
-    setResult(Number(result.toFixed(4)))
+    setResult(Number(result.toFixed(2)))
   }
 
   return (
     <div>
-      <h1>Welcome to calculator</h1>
+      <h1 style={
+        {
+          textAlign: 'center'
+        }
+      } data-testid='calculator-title'>Calculator</h1>
       {
         loading ? 
         (<Spinner/>) 
