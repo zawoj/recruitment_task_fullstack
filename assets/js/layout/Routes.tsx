@@ -11,6 +11,7 @@ import AboutView from "../sections/about/AboutView";
 import ExchangeView from "../sections/exchange/ExchangeView";
 import EchangeHistoryView from "../sections/exchange/EchangeHistoryView";
 import ContactView from "../sections/contanct/ContactView";
+import CalculatorView from "../sections/calculator/CalculatorView";
 
 const Routes = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,6 +51,11 @@ const Routes = () => {
                 Contact
               </NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link" exact to="/calculator">
+                Calculator
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>
@@ -59,6 +65,7 @@ const Routes = () => {
         <Route exact path='/exchange-rates' component={ExchangeView} />
         <Route exact path='/contact' component={ContactView} />
         <Route path={'/rate-history'} component={EchangeHistoryView} />
+        <Route path={'/calculator'} component={CalculatorView} />
       </Switch>
     </Router>
   );
